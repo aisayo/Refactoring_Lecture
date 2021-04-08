@@ -1,6 +1,8 @@
 class CoffeeOrdersController < ApplicationController
+    before_action :set_coffee, except: [:new, :create, :index]
     def index 
         @coffee_orders = CoffeeOrder.all
+        render action: "index", layout: "example"
     end 
     
     def new
@@ -18,15 +20,13 @@ class CoffeeOrdersController < ApplicationController
     end 
 
     def show 
-        @coffee_order = CoffeeOrder.find_by_id(params[:id])
+        render action: "show", layout: false
     end 
 
     def edit 
-        @coffee_order = CoffeeOrder.find_by_id(params[:id])
     end 
 
     def update 
-        @coffee_order = CoffeeOrder.find_by_id(params[:id])
         if @coffee_order.update(coffee_order_params)
             redirect_to coffee_order_path(@coffee_order)
         else 
@@ -35,7 +35,6 @@ class CoffeeOrdersController < ApplicationController
     end 
 
     def destroy 
-        @coffee_order = CoffeeOrder.find_by_id(params[:id])
         @coffee_order.destroy 
         redirect_to coffee_orders_path
     end 
@@ -45,4 +44,10 @@ private
     def coffee_order_params
         params.require(:coffee_order).permit(:title, :price, :size, :user_id, user_attributes: [:name])
     end 
+
+
+    def set_coffee 
+        @coffee_order = CoffeeOrder.find_by_id(params[:id])
+    end 
 end
+

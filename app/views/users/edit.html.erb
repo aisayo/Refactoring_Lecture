@@ -1,22 +1,4 @@
-<% if @user.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this article from being saved:</h2>
+<h1>Edit User:</h1>
+<%= render partial: "users/errors", locals: {object: @user} %>
 
-    <ul>
-      <% @user.errors.each do |error| %>
-        <li><%= error.full_message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
-
-<h1>Edit an existing user:</h1>
-<%= form_with model: @user do |f| %>
-
-   <%=  f.label :name %>
-   <%=  f.text_field :name %>
-   <br>
-   <br>
-   <%= f.submit %>
-
-<% end %>
+<%= render partial: "form", locals: {f: @user } %>

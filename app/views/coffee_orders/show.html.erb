@@ -1,10 +1,5 @@
 <h1>Coffee Order Show Page</h1>
 
-<p>
-    
-    Title:<%= @coffee_order.title %>
-    Price: <%= @coffee_order.price %>
-    Size: <%= @coffee_order.size %>
-    Date: <%= @coffee_order.created_at.strftime("%b %e, %l:%M %p") %>
+<%= render partial: "coffee", locals: {coffee_order: @coffee_order} %>
 
-</p>
+<%= coffee_sizes %>

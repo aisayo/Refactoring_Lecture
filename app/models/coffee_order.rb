@@ -1,5 +1,6 @@
 class CoffeeOrder < ApplicationRecord
     belongs_to :user
+    validates :title, presence: true
     
 
     def user_attributes=(user_attributes)

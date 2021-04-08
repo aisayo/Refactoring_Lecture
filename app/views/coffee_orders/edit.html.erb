@@ -1,30 +1,9 @@
-<% if @coffee_order.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@coffee_order.errors.count, "error") %> prohibited this article from being saved:</h2>
-
-    <ul>
-      <% @coffee_order.errors.each do |error| %>
-        <li><%= error.full_message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+<%= render partial: "users/errors", locals: {object: @coffee_order} %>
 
 <h1>Edit an existing coffee order:</h1>
 <%= form_with model: @coffee_order do |f| %>
+  <%= render partial: "form", locals: {in_partial: f} %>
 
-   <%=  f.label :title %>
-   <%=  f.text_field :title %>
-   <br>
-   <br>
-   <%=  f.label :price %>
-   <%=  f.number_field :price %>
-   <br>
-   <br>
-   <%=  f.label :size %>
-   <%=  f.text_field :size %>
-   <br>
-   <br>
    <%= f.submit %>
 
 <% end %>
