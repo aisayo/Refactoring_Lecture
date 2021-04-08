@@ -1,0 +1,10 @@
+<h1>All Coffee Orders:</h1>
+
+<% @coffee_orders.each do |co| %>
+    <p>
+        Title:<%= co.title %>
+        Price: <%= co.price %>
+        Size: <%= co.size %>
+        Date: <%= co.date %>
+    </p>
+<% end %>

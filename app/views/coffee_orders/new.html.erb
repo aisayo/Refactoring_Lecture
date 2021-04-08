@@ -1,0 +1,27 @@
+<h1>Create a new coffee order:</h1>
+<%= form_with model: @coffee_order do |f| %>
+
+   <%=  f.label :title %>
+   <%=  f.text_field :title %>
+   <br>
+   <br>
+   <%=  f.label :price %>
+   <%=  f.number_field :price %>
+   <br>
+   <br>
+   <%=  f.label :size %>
+   <%=  f.text_field :size %>
+   <br>
+   <br>
+   <h3>Select a User:</h3>
+   <%=  f.collection_select :user_id, User.all, :id, :name, prompt: true %>
+   <h3>or Create a User:</h3>
+   <%= f.fields_for :user do |u| %>
+      <%=  u.label :name %>
+      <%=  u.text_field :name %>
+      <br>
+      <br>
+   <% end %>
+   <%= f.submit %>
+
+<% end %>
