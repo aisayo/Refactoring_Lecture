@@ -1,3 +1,15 @@
+<% if @coffee_order.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@coffee_order.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+    <ul>
+      <% @coffee_order.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <h1>Create a new coffee order:</h1>
 <%= form_with model: @coffee_order do |f| %>
 
